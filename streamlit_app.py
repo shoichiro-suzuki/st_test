@@ -37,6 +37,7 @@ def main():
                     blob_name,
                     uploaded_file,
                 )
+                st.success(f"{blob_name} をアップロードしました")
         except Exception as e:
             st.error(f"Blob登録エラー: {e}")
             return
@@ -45,6 +46,7 @@ def main():
             upsert_to_container(
                 database_name="02_Documents", container_name="study", data=data
             )
+            st.success("CosmosDB に登録しました")
         except Exception as e:
             st.error(f"CosmosDB登録エラー: {e}")
             return
