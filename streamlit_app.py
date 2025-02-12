@@ -32,12 +32,12 @@ def main():
             for uploaded_file in uploaded_files:
                 blob_name = uploaded_file.name
                 print("blob_name==>", blob_name)
-                upload_blob_to_azure(
+                message = upload_blob_to_azure(
                     "study",
                     blob_name,
                     uploaded_file,
                 )
-                st.success(f"{blob_name} をアップロードしました")
+                st.success(message)
         except Exception as e:
             st.error(f"Blob登録エラー: {e}")
             return
