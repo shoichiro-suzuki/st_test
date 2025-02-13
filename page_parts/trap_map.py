@@ -119,9 +119,9 @@ def trap_map():
     st.session_state.selected_objects = event.selection["objects"]
     print("st.session_state.selected_objects==>")
     print(st.session_state.selected_objects)
-    # if st.session_state.selected_objects:
-    #     for p in st.session_state.selected_objects["map"]:
-    #         st.write(p["id"])
+    if st.session_state.selected_objects:
+        for p in st.session_state.selected_objects["map"]:
+            st.write(p["trap_name"])
 
     # 地図の表示
     # st.write("地図をクリックして座標を取得:")
