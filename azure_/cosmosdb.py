@@ -30,3 +30,19 @@ def upsert_to_container(database_name: str, container_name: str, data: dict):
         data["id"] = str(uuid.uuid4())
     upsert_item = container.upsert_item(body=data)
     return upsert_item
+
+
+def search_container_by_query(
+    database_name: str,
+    container_name: str,
+    query: str,
+    parameters: list,
+):
+    _, _, container = create_cosmos_client(
+        COSMOSDB_CORE_ENDPOINT, COSMOSDB_CORE_API_KEY, database_name, container_name
+    )
+
+    results = container.query_items(
+        query=query, parameters=parameters, enable_cross_partition_query=True
+    )
+    return list(results)
